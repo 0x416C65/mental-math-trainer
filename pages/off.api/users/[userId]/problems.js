@@ -1,4 +1,4 @@
-import prisma from 'prisma/prisma';
+import prisma from 'off.prisma/prisma';
 import cuid from 'cuid';
 import isUserAuthenticated from 'utils/auth';
 import { getSetBests } from 'utils/records';

@@ -3,7 +3,7 @@ import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
 import GitHubProvider from 'next-auth/providers/github';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import prisma from 'prisma/prisma';
+import prisma from 'off.prisma/prisma';
 import sendSignInLinkEmail from 'utils/email';
 import { MAX_DISPLAY_NAME_LENGTH } from 'utils/config';
 

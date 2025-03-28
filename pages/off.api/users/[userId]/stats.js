@@ -1,4 +1,4 @@
-import prisma from 'prisma/prisma';
+import prisma from 'off.prisma/prisma';
 import isUserAuthenticated from 'utils/auth';
 
 export default async function handler(req, res) {

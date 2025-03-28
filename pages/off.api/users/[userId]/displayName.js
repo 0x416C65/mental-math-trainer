@@ -1,4 +1,4 @@
-import prisma from 'prisma/prisma';
+import prisma from 'off.prisma/prisma';
 import isUserAuthenticated from 'utils/auth';
 import { MAX_DISPLAY_NAME_LENGTH } from 'utils/config';
 
