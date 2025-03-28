@@ -2,11 +2,11 @@
   "name": "mental-math-trainer",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "next:start": "next start",
+    "next:lint": "next lint",
+    "prisma:postinstall": "prisma generate"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",

@@ -13,7 +13,7 @@ import Listbox from 'components/Listbox';
 import PersonalRecords from 'components/PersonalRecords';
 import ConfirmationDialog from 'components/ConfirmationDialog';
 import { getServerSession } from 'next-auth';
-import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { authOptions } from 'pages/off.api/auth/[...nextauth]';
 
 // The zoom plugin requires dynamic import.
 const RecordProgressionsChart = dynamic(
