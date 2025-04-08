@@ -1,14 +1,14 @@
 import { useContext, useEffect } from 'react';
 import { SettingsContext } from 'utils/settings';
 import { OPERATORS, pluralize } from 'utils/format';
-import { getOperandLengths } from 'utils/utils';
+import { getFuckYouLengths, getOperandLengths } from 'utils/utils';
 import { MAX_OPERAND_LENGTH, MAX_PROBLEMS_PER_SET } from 'utils/config';
 import Listbox from 'components/Listbox';
 import NumberInput from 'components/NumberInput';
 
 export default function SetSettings() {
   const { settings, setSetting } = useContext(SettingsContext);
-  const { operation, operandLengths, setProblemCount } = settings;
+  const { operation, operandLengths, fuckYouLengths, setProblemCount } = settings;
 
   useEffect(() => {
     if (
@@ -26,6 +26,19 @@ export default function SetSettings() {
   return (
     <div className='mx-auto flex select-none flex-col gap-4'>
       <div className='flex flex-col gap-1'>
+        <div className='text-lg'>Fuck You</div>
+        <div className='grid grid-cols-[7rem_4.5rem_7rem] gap-3'>
+          <Listbox
+            value={fuckYouLengths[0]}
+            onChange={(value) => {
+              setSetting('fuckYouLengths', [value, fuckYouLengths[1]]);
+            }}
+            optionValues={getFuckYouLengths()}
+            optionNames={getFuckYouLengths().map((length) =>
+              pluralize('digit', length)
+            )}
+          />
+        </div>
         <div className='text-lg'>Problem type</div>
         <div className='grid grid-cols-[7rem_4.5rem_7rem] gap-3'>
           <Listbox

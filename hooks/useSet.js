@@ -7,12 +7,13 @@ export default function useSet(
   onSetEnd,
   operation,
   operandLengths,
+  fuckYouLengths,
   setProblemCount
 ) {
   const { settings } = useContext(SettingsContext);
   const { inputDirection } = settings;
   const [operands, setOperands] = useState(
-    getOperands(operation, operandLengths)
+    getOperands(operation, operandLengths, fuckYouLengths)
   );
   const [answerString, setAnswerString] = useState('');
   const [setStartTime] = useState(Date.now());
@@ -46,7 +47,7 @@ export default function useSet(
   );
 
   const reset = useCallback(() => {
-    setOperands(getOperands(operation, operandLengths));
+    setOperands(getOperands(operation, operandLengths, fuckYouLengths));
     clear();
     setProblemStartTime(Date.now());
   }, [operation, operandLengths]);
@@ -160,15 +161,19 @@ function getRandomIntegerByLength(length) {
   return getRandomInteger(min, max);
 }
 
-function getOperands(operation, operandLengths) {
+function getOperands(operation, operandLengths, fuckYouLengths) {
+  const mergeWithfuckYouLengths = (wtf) => {
+    if (fuckYouLengths[0] === 0) return wtf;
+    return [fuckYouLengths[0], wtf[1]];
+  }
   switch (operation) {
     case 'ADDITION':
     case 'MULTIPLICATION':
-      return operandLengths.map((length) =>
+      return mergeWithfuckYouLengths(operandLengths.map((length) =>
         length === 1
           ? // Exclude 1.
             getRandomInteger(2, 10)
-          : getRandomIntegerByLength(length)
+          : getRandomIntegerByLength(length))
       );
     case 'SUBTRACTION':
       if (operandLengths[0] !== operandLengths[1]) {
@@ -178,7 +183,7 @@ function getOperands(operation, operandLengths) {
       const maxMinuend = Math.pow(10, operandLengths[0]);
       const minuend = getRandomInteger(minMinuend, maxMinuend);
       const subtrahend = getRandomInteger(minMinuend - 1, minuend);
-      return [minuend, subtrahend];
+      return mergeWithfuckYouLengths([minuend, subtrahend]);
     case 'DIVISION':
       let divisor, minQuotient, maxQuotient;
       if (operandLengths[0] === operandLengths[1]) {
@@ -210,6 +215,6 @@ function getOperands(operation, operandLengths) {
       }
       const quotient = getRandomInteger(minQuotient, maxQuotient + 1);
       const dividend = divisor * quotient;
-      return [dividend, divisor];
+      return mergeWithfuckYouLengths([dividend, divisor]);
   }
 }

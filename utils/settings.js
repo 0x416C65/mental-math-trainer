@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 const defaultSettings = {
   operation: 'MULTIPLICATION',
+  fuckYouLengths: [0, 0],
   operandLengths: [1, 1],
   setProblemCount: 5,
   inputDirection: 'LEFT_TO_RIGHT',

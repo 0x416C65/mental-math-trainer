@@ -11,6 +11,7 @@ export default function Set({ solvedProblems, setSolvedProblems, onSetEnd }) {
   let {
     operation,
     operandLengths,
+    fuckYouLengths,
     setProblemCount,
     showProblemNumber,
     showTimer,
@@ -35,6 +36,7 @@ export default function Set({ solvedProblems, setSolvedProblems, onSetEnd }) {
     onSetEnd,
     operation,
     operandLengths,
+    fuckYouLengths,
     setProblemCount
   );
 
